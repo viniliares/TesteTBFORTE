@@ -1,0 +1,157 @@
+﻿@model TesteTBFORTE.Models.ProjetoVM
+
+@{
+    var logs = ViewBag.Logs;
+}
+
+@using (Html.BeginForm("Projeto", "Projeto", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row bg-light p-4">
+            <div class="col-sm float-left">
+                <button type="submit" onclick="confirmar()" class="btn btn-success">Confirmar</button>
+            </div>
+            <div class="col-sm">
+                <button class="btn btn-secondary float-right" onclick="voltar()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="container">
+        <div class="row">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Geral</a>
+                    <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Log</a>
+                </div>
+            </nav>
+
+            <div class="tab-content bg-light" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">
+                                Informações Gerais
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="form-row">
+                                        <div class="col-md-3 mb-3">
+                                            <label>Id</label>
+                                            <input type="text" asp-for="Id" class="form-control" id="id" placeholder="Id" required disabled />
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label>Nome *</label>
+                                            <input type="text" asp-for="Nome" class="form-control" id="nome" placeholder="Nome" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label>Descrição</label>
+                                            <input type="text" asp-for="Descricao" class="form-control" id="descricao" placeholder="Descrição" />
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3 mb-3">
+                                            <label>Criado Por</label>
+                                            <input type="text" asp-for="CriadoPor" class="form-control" id="criadoP" disabled />
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Em</label>
+                                            <input type="text" asp-for="CriadoEm" class="form-control" id="criadoE" disabled />
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Atualizado por</label>
+                                            <input type="text" asp-for="AtualizadoPor" class="form-control" id="atualO" disabled />
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label>Em</label>
+                                            <input type="text" asp-for="AtualizadoEm" class="form-control" id="atualE" disabled />
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">
+                                Dados do Projeto
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label>URL Jira</label>
+                                            <input type="text" asp-for="UrlJira" class="form-control" id="url" required />
+                                        </div>
+                                        <div class="col-md-1 mb-3">
+                                            <br /><button type="button" class="btn btn-danger" onclick="urlJira('@Model.UrlJira')">T</button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="container">
+                        <div class="row jumbotron-fluid">
+                            <div class="card">
+                                <div class="card-header">
+                                    Log(Horário de Brasília)
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        @foreach (var lista in logs)
+                                        {
+                                            <fieldset class="border p-2">
+                                                <label>@lista.Data</label><br />
+                                                <label>@lista.Mensagem</label><br />
+                                            </fieldset><br />
+                                        }
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="container">
+                <div class="row bg-light p-4">
+                    <div class="col-sm float-left">
+                        <button type="submit" onclick="confirmar()" class="btn btn-success">Confirmar</button>
+                    </div>
+                    <div class="col-sm">
+                        <button class="btn btn-secondary float-right" onclick="voltar()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    function confirmar() {
+        $('#id').prop("disabled", false);
+        $('#criadoP').prop("disabled", false);
+        $('#criadoE').prop("disabled", false);
+        $('#atualP').prop("disabled", false);
+        $('#atualE').prop("disabled", false);
+    }
+
+    function voltar() {
+        location.href = document.referrer;
+    }
+
+    function urlJira(caminho) {
+        window.open(caminho, '_blank');
+    }
+</script>

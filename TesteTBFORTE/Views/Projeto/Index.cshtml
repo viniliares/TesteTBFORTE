@@ -1,0 +1,48 @@
+﻿@{
+    var projetos = ViewBag.Projetos;
+}
+
+<div class="container">
+    <div class="row bg-light p-4">
+        <div class="col-sm float-left">
+            <button class="btn btn-success" onclick="location.href ='/Projeto/Projeto'">Novo</button>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="card">
+    <div class="card-header">
+        Projetos
+    </div>
+    <ul class="list-group list-group-flush">
+
+        <li class="list-group-item">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Descrição</td>
+                        <td>Atualizado Por</td>
+                        <td>Atualizado Em</td>
+                        <td>Ações</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var lista in projetos)
+                    {
+                        <tr>
+                            <td>@lista.Nome</td>
+                            <td>@lista.Descricao</td>
+                            <td>@lista.AtualizadoPor</td>
+                            <td>@lista.AtualizadoEm</td>
+                            <td><button class="btn btn-secondary" onclick="location.href ='/Projeto/Projeto?id=@lista.Id'">Opções</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </li>
+
+    </ul>
+</div>

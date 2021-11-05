@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TesteTBFORTE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="background-color:lightgray">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <img src="~/tbforte.png" height="50" />
+            <div class="container">
+                <button class="nav-item" type="button" disabled @*data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"*@>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Relacionamento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Operações</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Faturamento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Segurança</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">T.I.</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container float-left">
+        <div class="row jumbotron-fluid">
+            <div class="collapse col-md-2" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4" style="height:100%; position:absolute; z-index: 1; left: 0; background-color: #111; overflow-x: hidden">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                        </li>
+                        <li>
+                            <p class="text-light">PARAMETRIZAÇÕES</p>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Geral</a>
+                        </li>
+                        <li>
+                            <p class="text-light">FEATURE FLAGS</p>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Infra</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Demais Sistemas</a>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Projeto" asp-action="Index">Projetos</a>
+                        </li>
+                        <li>
+                            <p class="text-light">ACESSOS</p>
+                        </li>
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Acesso</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - TesteTBFORTE - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link href="~/css/estilo.css" rel="stylesheet" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
